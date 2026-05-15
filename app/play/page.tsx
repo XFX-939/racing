@@ -16,7 +16,7 @@ import { useRaceState } from "@/hooks/useRaceState";
 import { useTouchControls } from "@/hooks/useTouchControls";
 import { getQualitySetting, getSoundEnabled, setQualitySetting, setSoundEnabled } from "@/lib/preferences";
 import { saveRaceResult } from "@/lib/leaderboard";
-import { playTone } from "@/lib/sound";
+import { playTone, startBackgroundMusic, stopBackgroundMusic } from "@/lib/sound";
 import type { QualitySetting, RaceResult, RaceTelemetry } from "@/types/game";
 
 const RacingScene = dynamic(() => import("@/components/game/RacingScene").then((mod) => mod.RacingScene), {
@@ -45,6 +45,16 @@ export default function PlayPage() {
       resetTouchControls();
     }
   }, [race.phase, resetTouchControls]);
+
+  useEffect(() => {
+    if ((race.phase === "countdown" || race.phase === "racing") && soundEnabled) {
+      startBackgroundMusic(true);
+    } else {
+      stopBackgroundMusic();
+    }
+
+    return () => stopBackgroundMusic();
+  }, [race.phase, soundEnabled]);
 
   useEffect(() => {
     setSavedResult(null);
@@ -91,6 +101,7 @@ export default function PlayPage() {
 
   function startRace() {
     playTone("select", soundEnabled);
+    startBackgroundMusic(soundEnabled);
     race.startRace();
   }
 

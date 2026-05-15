@@ -75,14 +75,14 @@ export default function ProfilePage() {
           </div>
           <div className="grid gap-4">
             <div className="rounded-lg border border-slate-700/70 bg-slate-950/50 p-4">
-              <div className="mb-3 text-sm font-bold text-slate-300">音效</div>
+              <div className="mb-3 text-sm font-bold text-slate-300">音效 / 音乐</div>
               <button
                 type="button"
                 onClick={() => updateSound(!sound)}
                 className="arena-button-secondary h-11 px-4"
               >
                 {sound ? <Volume2 className="h-4 w-4" /> : <VolumeX className="h-4 w-4" />}
-                {sound ? "音效开启" : "音效关闭"}
+                {sound ? "声音开启" : "声音关闭"}
               </button>
             </div>
             <div className="rounded-lg border border-slate-700/70 bg-slate-950/50 p-4">

@@ -34,7 +34,7 @@ export function PauseMenu({ soundEnabled, quality, onResume, onRestart, onSoundC
         </div>
 
         <div className="mt-6 rounded-lg border border-slate-700/70 bg-slate-950/50 p-4">
-          <div className="mb-3 text-sm font-bold text-slate-300">音效</div>
+          <div className="mb-3 text-sm font-bold text-slate-300">音效 / 音乐</div>
           <button type="button" onClick={() => onSoundChange(!soundEnabled)} className="arena-button-secondary h-10 px-4">
             {soundEnabled ? <Volume2 className="h-4 w-4" /> : <VolumeX className="h-4 w-4" />}
             {soundEnabled ? "开启" : "关闭"}
