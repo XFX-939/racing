@@ -78,7 +78,7 @@ export function updateCarPhysics(state: CarPhysicsState, controls: ControlsState
   const acceleration = 4.6 + car.acceleration / 17;
   const braking = 9.5;
   const reverseAcceleration = 3.4;
-  const steer = (controls.right ? 1 : 0) - (controls.left ? 1 : 0);
+  const steer = (controls.left ? 1 : 0) - (controls.right ? 1 : 0);
   const absoluteSpeed = Math.abs(state.speed);
   const speedRatio = clamp(absoluteSpeed / baseMaxSpeed, 0, 1.35);
   const canNitro = controls.nitro && state.nitro > 0 && state.speed > 1;
